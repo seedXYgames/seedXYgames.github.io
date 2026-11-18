@@ -1,0 +1,59 @@
+{
+ "id": "choice-seeds",
+ "made": "2026-11-18T10:26:22.593Z",
+ "px": 900,
+ "grounds": [
+  "dark"
+ ],
+ "colors": [
+  "listen",
+  "explore",
+  "wait",
+  "mixed"
+ ],
+ "variants": {
+  "three-quarter": {
+   "view": "three-quarter",
+   "scene": null,
+   "off": false,
+   "grounds": [
+    "dark"
+   ],
+   "stills": {
+    "dark": {
+     "listen": {
+      "file": "stills/choice-seeds-three-quarter-listen-dark.webp",
+      "half": "stills/choice-seeds-three-quarter-listen-dark-half.webp",
+      "w": 950,
+      "h": 677
+     },
+     "explore": {
+      "file": "stills/choice-seeds-three-quarter-explore-dark.webp",
+      "half": "stills/choice-seeds-three-quarter-explore-dark-half.webp",
+      "w": 950,
+      "h": 677
+     },
+     "wait": {
+      "file": "stills/choice-seeds-three-quarter-wait-dark.webp",
+      "half": "stills/choice-seeds-three-quarter-wait-dark-half.webp",
+      "w": 950,
+      "h": 677
+     },
+     "mixed": {
+      "file": "stills/choice-seeds-three-quarter-mixed-dark.webp",
+      "half": "stills/choice-seeds-three-quarter-mixed-dark-half.webp",
+      "w": 950,
+      "h": 677
+     }
+    }
+   },
+   "box": [
+    0.0063,
+    0.0089,
+    0.9589,
+    0.901
+   ],
+   "px": 900
+  }
+ }
+}

@@ -1,0 +1,7 @@
+.taste-skill/chrome-*
+shots/
+node_modules/
+*-menu.png
+*-clean.png
+
+.taste-skill/
