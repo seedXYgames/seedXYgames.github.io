@@ -908,6 +908,189 @@
     .seed-card-desc { color: var(--muted); font-size: 0.8rem; line-height: 1.6; }
 
     /* ═══════════════════════════════════════════
+       PASSPORT SECTION
+    ═══════════════════════════════════════════ */
+    .passport-section {
+      padding: 120px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+      border-top: 1px solid var(--border);
+    }
+
+    .passport-card {
+      background: linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(14,165,233,0.06) 100%), var(--bg2);
+      border: 1px solid var(--border2);
+      border-radius: 28px;
+      padding: 48px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .passport-card::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(124,58,237,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .passport-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .passport-user-wrap {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .passport-avatar {
+      width: 72px; height: 72px;
+      border-radius: 20px;
+      border: 2px solid rgba(255,255,255,0.2);
+      object-fit: cover;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+
+    .passport-avatar-placeholder {
+      width: 72px; height: 72px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--dark-purple), var(--dark-blue));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 32px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+
+    .passport-name {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .passport-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #38bdf8;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .passport-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+
+    .passport-stat-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .passport-stat-val {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.03em;
+    }
+
+    .passport-stat-lbl {
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 6px;
+    }
+
+    .passport-games-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .passport-game-col {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+    }
+
+    .passport-game-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .passport-game-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .passport-ach-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .passport-ach-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 0.75rem;
+      color: var(--muted2);
+    }
+
+    .passport-ach-badge.unlocked {
+      background: rgba(124,58,237,0.15);
+      border-color: rgba(124,58,237,0.4);
+      color: #fff;
+    }
+
+    .passport-login-cta {
+      text-align: center;
+      padding: 40px 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .passport-login-cta h3 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .passport-login-cta p {
+      color: var(--muted2);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    /* ═══════════════════════════════════════════
        FOOTER
     ═══════════════════════════════════════════ */
     footer {
@@ -1048,7 +1231,9 @@
       <li><a href="#games">Giochi</a></li>
       <li><a href="#philosophy">Studio</a></li>
       <li><a href="#seed">Il Seed</a></li>
-      <li><a href="https://github.com/seedXYgames" target="_blank" rel="noopener" class="nav-cta">GitHub →</a></li>
+      <li><a href="#passport">Passport</a></li>
+      <li><button onclick="window.SeedXY?.togglePanel()" class="nav-cta" id="nav-auth-btn">Accedi con GitHub</button></li>
+      <li><a href="https://github.com/seedXYgames" target="_blank" rel="noopener" style="opacity:0.7">GitHub ↗</a></li>
     </ul>
   </nav>
 
@@ -1085,6 +1270,100 @@
     <div class="scroll-hint">
       <span>Scorri</span>
       <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ══ PASSPORT SECTION ═════════════════════════════════ -->
+  <section class="passport-section" id="passport">
+    <div class="section-eyebrow" style="justify-content:center">Account Unificato</div>
+    <h2 class="section-title" style="text-align:center">SeedXY Passport</h2>
+    <p class="section-desc" style="margin:16px auto 48px;text-align:center;max-width:520px">
+      Un solo account per salvare e sincronizzare turni, sblocchi e record tra The Dark Seed e The Hospital Seed su qualsiasi computer.
+    </p>
+
+    <div class="passport-card" id="passport-container">
+      <!-- Dinamico: popolato via JS in base allo stato di login -->
+      <div class="passport-login-cta" id="passport-guest-view">
+        <div style="font-size:3rem;margin-bottom:16px">🌱</div>
+        <h3>Il tuo passaporto nei mondi procedurali</h3>
+        <p>
+          Collegando il tuo account GitHub, tutti i tuoi turni completati e gli achievement sbloccati vengono sincronizzati in tempo reale in un Gist privato e crittografato. Nessun database centrale, nessun tracciamento, gratis per sempre.
+        </p>
+        <button onclick="window.SeedXY?.login()" class="btn-primary" style="margin:0 auto;display:inline-flex">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          Collega Account GitHub
+        </button>
+      </div>
+
+      <div id="passport-user-view" style="display:none">
+        <div class="passport-header">
+          <div class="passport-user-wrap">
+            <img class="passport-avatar" id="pp-avatar" src="" alt="Avatar">
+            <div>
+              <div class="passport-name" id="pp-name">Giocatore</div>
+              <div class="passport-status">
+                <span style="width:8px;height:8px;border-radius:50%;background:#38bdf8;display:inline-block"></span>
+                <span id="pp-login">@username</span> · Sincronizzazione Cloud Attiva
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px">
+            <button onclick="window.SeedXY?.syncLocalProgress()" class="btn-secondary" style="padding:10px 16px;font-size:0.85rem">
+              ☁️ Forza Sync
+            </button>
+            <button onclick="window.SeedXY?.logout()" class="btn-secondary" style="padding:10px 16px;font-size:0.85rem;color:#ff6b6b">
+              Disconnetti
+            </button>
+          </div>
+        </div>
+
+        <div class="passport-stats-grid">
+          <div class="passport-stat-box">
+            <div class="passport-stat-val" id="pp-stat-shifts">0</div>
+            <div class="passport-stat-lbl">Turni Sopravvissuti</div>
+          </div>
+          <div class="passport-stat-box">
+            <div class="passport-stat-val" id="pp-stat-dist">0.0 km</div>
+            <div class="passport-stat-lbl">Pattuglia a Piedi</div>
+          </div>
+          <div class="passport-stat-box">
+            <div class="passport-stat-val" id="pp-stat-tasks">0</div>
+            <div class="passport-stat-lbl">Incarichi Completati</div>
+          </div>
+          <div class="passport-stat-box">
+            <div class="passport-stat-val" id="pp-stat-ach">0</div>
+            <div class="passport-stat-lbl">Trofei Conquistati</div>
+          </div>
+        </div>
+
+        <div class="passport-games-comparison">
+          <div class="passport-game-col">
+            <div class="passport-game-head">
+              <span class="passport-game-title">🌲 The Dark Seed</span>
+              <span class="game-tag" id="pp-dark-badge">0 turni</span>
+            </div>
+            <p style="color:var(--muted);font-size:0.85rem;line-height:1.5">
+              Patrol duty nella foresta. Creature schivate, sentieri percorsi e anomalie registrate.
+            </p>
+            <div class="passport-ach-grid" id="pp-dark-achs">
+              <span class="passport-ach-badge">Nessun obiettivo ancora</span>
+            </div>
+          </div>
+
+          <div class="passport-game-col">
+            <div class="passport-game-head">
+              <span class="passport-game-title">🏥 The Hospital Seed</span>
+              <span class="game-tag" id="pp-hosp-badge">0 turni</span>
+            </div>
+            <p style="color:var(--muted);font-size:0.85rem;line-height:1.5">
+              Vigilia di Natale ai piani 20-22. Blackout ripristinati, telecamere verificate e pazienti assistiti.
+            </p>
+            <div class="passport-ach-grid" id="pp-hosp-achs">
+              <span class="passport-ach-badge">Nessun obiettivo ancora</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1234,6 +1513,100 @@
     </div>
   </section>
 
+  <!-- ══ PASSPORT SECTION ═════════════════════════════════ -->
+  <section class="passport-section" id="passport">
+    <div class="section-eyebrow" style="justify-content:center">Account Unificato</div>
+    <h2 class="section-title" style="text-align:center">SeedXY Passport</h2>
+    <p class="section-desc" style="margin:16px auto 48px;text-align:center;max-width:520px">
+      Un solo account per salvare e sincronizzare turni, sblocchi e record tra The Dark Seed e The Hospital Seed su qualsiasi computer.
+    </p>
+
+    <div class="passport-card" id="passport-container">
+      <!-- Dinamico: popolato via JS in base allo stato di login -->
+      <div class="passport-login-cta" id="passport-guest-view">
+        <div style="font-size:3rem;margin-bottom:16px">🌱</div>
+        <h3>Il tuo passaporto nei mondi procedurali</h3>
+        <p>
+          Collegando il tuo account GitHub, tutti i tuoi turni completati e gli achievement sbloccati vengono sincronizzati in tempo reale in un Gist privato e crittografato. Nessun database centrale, nessun tracciamento, gratis per sempre.
+        </p>
+        <button onclick="window.SeedXY?.login()" class="btn-primary" style="margin:0 auto;display:inline-flex">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          Collega Account GitHub
+        </button>
+      </div>
+
+      <div id="passport-user-view" style="display:none">
+        <div class="passport-header">
+          <div class="passport-user-wrap">
+            <img class="passport-avatar" id="pp-avatar" src="" alt="Avatar">
+            <div>
+              <div class="passport-name" id="pp-name">Giocatore</div>
+              <div class="passport-status">
+                <span style="width:8px;height:8px;border-radius:50%;background:#38bdf8;display:inline-block"></span>
+                <span id="pp-login">@username</span> · Sincronizzazione Cloud Attiva
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px">
+            <button onclick="window.SeedXY?.syncLocalProgress()" class="btn-secondary" style="padding:10px 16px;font-size:0.85rem">
+              ☁️ Forza Sync
+            </button>
+            <button onclick="window.SeedXY?.logout()" class="btn-secondary" style="padding:10px 16px;font-size:0.85rem;color:#ff6b6b">
+              Disconnetti
+            </button>
+          </div>
+        </div>
+
+        <div class="passport-stats-grid">
+          <div class="passport-stat-box">
+            <div class="passport-stat-val" id="pp-stat-shifts">0</div>
+            <div class="passport-stat-lbl">Turni Sopravvissuti</div>
+          </div>
+          <div class="passport-stat-box">
+            <div class="passport-stat-val" id="pp-stat-dist">0.0 km</div>
+            <div class="passport-stat-lbl">Pattuglia a Piedi</div>
+          </div>
+          <div class="passport-stat-box">
+            <div class="passport-stat-val" id="pp-stat-tasks">0</div>
+            <div class="passport-stat-lbl">Incarichi Completati</div>
+          </div>
+          <div class="passport-stat-box">
+            <div class="passport-stat-val" id="pp-stat-ach">0</div>
+            <div class="passport-stat-lbl">Trofei Conquistati</div>
+          </div>
+        </div>
+
+        <div class="passport-games-comparison">
+          <div class="passport-game-col">
+            <div class="passport-game-head">
+              <span class="passport-game-title">🌲 The Dark Seed</span>
+              <span class="game-tag" id="pp-dark-badge">0 turni</span>
+            </div>
+            <p style="color:var(--muted);font-size:0.85rem;line-height:1.5">
+              Patrol duty nella foresta. Creature schivate, sentieri percorsi e anomalie registrate.
+            </p>
+            <div class="passport-ach-grid" id="pp-dark-achs">
+              <span class="passport-ach-badge">Nessun obiettivo ancora</span>
+            </div>
+          </div>
+
+          <div class="passport-game-col">
+            <div class="passport-game-head">
+              <span class="passport-game-title">🏥 The Hospital Seed</span>
+              <span class="game-tag" id="pp-hosp-badge">0 turni</span>
+            </div>
+            <p style="color:var(--muted);font-size:0.85rem;line-height:1.5">
+              Vigilia di Natale ai piani 20-22. Blackout ripristinati, telecamere verificate e pazienti assistiti.
+            </p>
+            <div class="passport-ach-grid" id="pp-hosp-achs">
+              <span class="passport-ach-badge">Nessun obiettivo ancora</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ══ PHILOSOPHY ═══════════════════════════════════════ -->
   <section class="philosophy" id="philosophy">
     <div class="philosophy-inner">
@@ -1276,6 +1649,100 @@
           <span class="pillar-icon">🤖</span>
           <div class="pillar-title">AI narrativa</div>
           <div class="pillar-desc">The Hospital Seed usa TTS neurale (Piper) per dar voce ai pazienti. Tutto offline, nel browser.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PASSPORT SECTION ═════════════════════════════════ -->
+  <section class="passport-section" id="passport">
+    <div class="section-eyebrow" style="justify-content:center">Account Unificato</div>
+    <h2 class="section-title" style="text-align:center">SeedXY Passport</h2>
+    <p class="section-desc" style="margin:16px auto 48px;text-align:center;max-width:520px">
+      Un solo account per salvare e sincronizzare turni, sblocchi e record tra The Dark Seed e The Hospital Seed su qualsiasi computer.
+    </p>
+
+    <div class="passport-card" id="passport-container">
+      <!-- Dinamico: popolato via JS in base allo stato di login -->
+      <div class="passport-login-cta" id="passport-guest-view">
+        <div style="font-size:3rem;margin-bottom:16px">🌱</div>
+        <h3>Il tuo passaporto nei mondi procedurali</h3>
+        <p>
+          Collegando il tuo account GitHub, tutti i tuoi turni completati e gli achievement sbloccati vengono sincronizzati in tempo reale in un Gist privato e crittografato. Nessun database centrale, nessun tracciamento, gratis per sempre.
+        </p>
+        <button onclick="window.SeedXY?.login()" class="btn-primary" style="margin:0 auto;display:inline-flex">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          Collega Account GitHub
+        </button>
+      </div>
+
+      <div id="passport-user-view" style="display:none">
+        <div class="passport-header">
+          <div class="passport-user-wrap">
+            <img class="passport-avatar" id="pp-avatar" src="" alt="Avatar">
+            <div>
+              <div class="passport-name" id="pp-name">Giocatore</div>
+              <div class="passport-status">
+                <span style="width:8px;height:8px;border-radius:50%;background:#38bdf8;display:inline-block"></span>
+                <span id="pp-login">@username</span> · Sincronizzazione Cloud Attiva
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px">
+            <button onclick="window.SeedXY?.syncLocalProgress()" class="btn-secondary" style="padding:10px 16px;font-size:0.85rem">
+              ☁️ Forza Sync
+            </button>
+            <button onclick="window.SeedXY?.logout()" class="btn-secondary" style="padding:10px 16px;font-size:0.85rem;color:#ff6b6b">
+              Disconnetti
+            </button>
+          </div>
+        </div>
+
+        <div class="passport-stats-grid">
+          <div class="passport-stat-box">
+            <div class="passport-stat-val" id="pp-stat-shifts">0</div>
+            <div class="passport-stat-lbl">Turni Sopravvissuti</div>
+          </div>
+          <div class="passport-stat-box">
+            <div class="passport-stat-val" id="pp-stat-dist">0.0 km</div>
+            <div class="passport-stat-lbl">Pattuglia a Piedi</div>
+          </div>
+          <div class="passport-stat-box">
+            <div class="passport-stat-val" id="pp-stat-tasks">0</div>
+            <div class="passport-stat-lbl">Incarichi Completati</div>
+          </div>
+          <div class="passport-stat-box">
+            <div class="passport-stat-val" id="pp-stat-ach">0</div>
+            <div class="passport-stat-lbl">Trofei Conquistati</div>
+          </div>
+        </div>
+
+        <div class="passport-games-comparison">
+          <div class="passport-game-col">
+            <div class="passport-game-head">
+              <span class="passport-game-title">🌲 The Dark Seed</span>
+              <span class="game-tag" id="pp-dark-badge">0 turni</span>
+            </div>
+            <p style="color:var(--muted);font-size:0.85rem;line-height:1.5">
+              Patrol duty nella foresta. Creature schivate, sentieri percorsi e anomalie registrate.
+            </p>
+            <div class="passport-ach-grid" id="pp-dark-achs">
+              <span class="passport-ach-badge">Nessun obiettivo ancora</span>
+            </div>
+          </div>
+
+          <div class="passport-game-col">
+            <div class="passport-game-head">
+              <span class="passport-game-title">🏥 The Hospital Seed</span>
+              <span class="game-tag" id="pp-hosp-badge">0 turni</span>
+            </div>
+            <p style="color:var(--muted);font-size:0.85rem;line-height:1.5">
+              Vigilia di Natale ai piani 20-22. Blackout ripristinati, telecamere verificate e pazienti assistiti.
+            </p>
+            <div class="passport-ach-grid" id="pp-hosp-achs">
+              <span class="passport-ach-badge">Nessun obiettivo ancora</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1331,6 +1798,100 @@
         <span class="seed-card-icon">🎲</span>
         <div class="seed-card-title">1.000.001 notti</div>
         <div class="seed-card-desc">Da 0 a 1.000.000. Ogni numero è un'esperienza distinta. Puoi giocarle tutte.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PASSPORT SECTION ═════════════════════════════════ -->
+  <section class="passport-section" id="passport">
+    <div class="section-eyebrow" style="justify-content:center">Account Unificato</div>
+    <h2 class="section-title" style="text-align:center">SeedXY Passport</h2>
+    <p class="section-desc" style="margin:16px auto 48px;text-align:center;max-width:520px">
+      Un solo account per salvare e sincronizzare turni, sblocchi e record tra The Dark Seed e The Hospital Seed su qualsiasi computer.
+    </p>
+
+    <div class="passport-card" id="passport-container">
+      <!-- Dinamico: popolato via JS in base allo stato di login -->
+      <div class="passport-login-cta" id="passport-guest-view">
+        <div style="font-size:3rem;margin-bottom:16px">🌱</div>
+        <h3>Il tuo passaporto nei mondi procedurali</h3>
+        <p>
+          Collegando il tuo account GitHub, tutti i tuoi turni completati e gli achievement sbloccati vengono sincronizzati in tempo reale in un Gist privato e crittografato. Nessun database centrale, nessun tracciamento, gratis per sempre.
+        </p>
+        <button onclick="window.SeedXY?.login()" class="btn-primary" style="margin:0 auto;display:inline-flex">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          Collega Account GitHub
+        </button>
+      </div>
+
+      <div id="passport-user-view" style="display:none">
+        <div class="passport-header">
+          <div class="passport-user-wrap">
+            <img class="passport-avatar" id="pp-avatar" src="" alt="Avatar">
+            <div>
+              <div class="passport-name" id="pp-name">Giocatore</div>
+              <div class="passport-status">
+                <span style="width:8px;height:8px;border-radius:50%;background:#38bdf8;display:inline-block"></span>
+                <span id="pp-login">@username</span> · Sincronizzazione Cloud Attiva
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px">
+            <button onclick="window.SeedXY?.syncLocalProgress()" class="btn-secondary" style="padding:10px 16px;font-size:0.85rem">
+              ☁️ Forza Sync
+            </button>
+            <button onclick="window.SeedXY?.logout()" class="btn-secondary" style="padding:10px 16px;font-size:0.85rem;color:#ff6b6b">
+              Disconnetti
+            </button>
+          </div>
+        </div>
+
+        <div class="passport-stats-grid">
+          <div class="passport-stat-box">
+            <div class="passport-stat-val" id="pp-stat-shifts">0</div>
+            <div class="passport-stat-lbl">Turni Sopravvissuti</div>
+          </div>
+          <div class="passport-stat-box">
+            <div class="passport-stat-val" id="pp-stat-dist">0.0 km</div>
+            <div class="passport-stat-lbl">Pattuglia a Piedi</div>
+          </div>
+          <div class="passport-stat-box">
+            <div class="passport-stat-val" id="pp-stat-tasks">0</div>
+            <div class="passport-stat-lbl">Incarichi Completati</div>
+          </div>
+          <div class="passport-stat-box">
+            <div class="passport-stat-val" id="pp-stat-ach">0</div>
+            <div class="passport-stat-lbl">Trofei Conquistati</div>
+          </div>
+        </div>
+
+        <div class="passport-games-comparison">
+          <div class="passport-game-col">
+            <div class="passport-game-head">
+              <span class="passport-game-title">🌲 The Dark Seed</span>
+              <span class="game-tag" id="pp-dark-badge">0 turni</span>
+            </div>
+            <p style="color:var(--muted);font-size:0.85rem;line-height:1.5">
+              Patrol duty nella foresta. Creature schivate, sentieri percorsi e anomalie registrate.
+            </p>
+            <div class="passport-ach-grid" id="pp-dark-achs">
+              <span class="passport-ach-badge">Nessun obiettivo ancora</span>
+            </div>
+          </div>
+
+          <div class="passport-game-col">
+            <div class="passport-game-head">
+              <span class="passport-game-title">🏥 The Hospital Seed</span>
+              <span class="game-tag" id="pp-hosp-badge">0 turni</span>
+            </div>
+            <p style="color:var(--muted);font-size:0.85rem;line-height:1.5">
+              Vigilia di Natale ai piani 20-22. Blackout ripristinati, telecamere verificate e pazienti assistiti.
+            </p>
+            <div class="passport-ach-grid" id="pp-hosp-achs">
+              <span class="passport-ach-badge">Nessun obiettivo ancora</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1425,6 +1986,70 @@
       el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
       observer.observe(el);
     });
+
+    // Passport reactive sync
+    window.addEventListener('seedxy:state-changed', (e) => {
+      const { isLoggedIn, user, tdsProgress, thsProgress, saveData } = e.detail;
+      const guestView = document.getElementById('passport-guest-view');
+      const userView = document.getElementById('passport-user-view');
+      const navBtn = document.getElementById('nav-auth-btn');
+
+      if (!isLoggedIn || !user) {
+        if (guestView) guestView.style.display = 'block';
+        if (userView) userView.style.display = 'none';
+        if (navBtn) navBtn.textContent = 'Accedi con GitHub';
+        return;
+      }
+
+      if (guestView) guestView.style.display = 'none';
+      if (userView) userView.style.display = 'block';
+      if (navBtn) navBtn.textContent = '👤 ' + (user.name || user.login);
+
+      document.getElementById('pp-avatar').src = user.avatar || '';
+      document.getElementById('pp-name').textContent = user.name || user.login;
+      document.getElementById('pp-login').textContent = '@' + user.login;
+
+      const tdsShifts = tdsProgress?.completed || 0;
+      const thsShifts = thsProgress?.completed || 0;
+      const totalShifts = tdsShifts + thsShifts;
+      const distKm = (((tdsProgress?.totals?.meters || 0) + (thsProgress?.totals?.meters || 0)) / 1000).toFixed(1);
+      const totalTasks = (tdsProgress?.totals?.reports || 0) + (thsProgress?.totals?.tasks || 0);
+      
+      const tdsAchCount = Object.keys(tdsProgress?.unlocked || {}).length;
+      const thsAchCount = Object.keys(thsProgress?.unlocked || {}).length;
+      const totalAch = tdsAchCount + thsAchCount;
+
+      document.getElementById('pp-stat-shifts').textContent = totalShifts;
+      document.getElementById('pp-stat-dist').textContent = distKm + ' km';
+      document.getElementById('pp-stat-tasks').textContent = totalTasks;
+      document.getElementById('pp-stat-ach').textContent = totalAch;
+
+      document.getElementById('pp-dark-badge').textContent = tdsShifts + ' turni';
+      document.getElementById('pp-hosp-badge').textContent = thsShifts + ' turni';
+
+      // Render Dark Seed achievements
+      const darkContainer = document.getElementById('pp-dark-achs');
+      if (darkContainer) {
+        const u = Object.keys(tdsProgress?.unlocked || {});
+        if (u.length === 0) {
+          darkContainer.innerHTML = '<span class="passport-ach-badge">Nessun obiettivo ancora</span>';
+        } else {
+          darkContainer.innerHTML = u.map(k => `<span class="passport-ach-badge unlocked">🌲 ${k}</span>`).join('');
+        }
+      }
+
+      // Render Hospital Seed achievements
+      const hospContainer = document.getElementById('pp-hosp-achs');
+      if (hospContainer) {
+        const u = Object.keys(thsProgress?.unlocked || {});
+        if (u.length === 0) {
+          hospContainer.innerHTML = '<span class="passport-ach-badge">Nessun obiettivo ancora</span>';
+        } else {
+          hospContainer.innerHTML = u.map(k => `<span class="passport-ach-badge unlocked">🏥 ${k}</span>`).join('');
+        }
+      }
+    });
   </script>
+  <script src="./seedxy-auth.js"></script>
 </body>
 </html>
