@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="SeedXY Games — horror procedurale per browser. The Dark Seed e The Hospital Seed." />
+  <meta name="color-scheme" content="dark" />
+  <title>SeedXY Games</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #05050a;
+      --surface: #0d0d18;
+      --border: rgba(255,255,255,0.07);
+      --text: #e8e8f0;
+      --muted: #888899;
+      --accent-dark: #7c3aed;
+      --accent-hospital: #0ea5e9;
+      --glow-dark: rgba(124,58,237,0.35);
+      --glow-hospital: rgba(14,165,233,0.35);
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 80px 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(124,58,237,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .logo-mark {
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--accent-dark), var(--accent-hospital));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 0 40px rgba(124,58,237,0.5);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #fff 30%, var(--muted));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .tagline {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 500px;
+      line-height: 1.6;
+    }
+
+    /* ── GAMES GRID ── */
+    .games {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2px;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card--dark:hover  { box-shadow: 0 20px 60px var(--glow-dark); }
+    .card--hospital:hover { box-shadow: 0 20px 60px var(--glow-hospital); }
+
+    .card__banner {
+      height: 180px;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card--dark .card__banner {
+      background: linear-gradient(160deg, #1a0a2e 0%, #0d0010 50%, #000 100%);
+    }
+
+    .card--hospital .card__banner {
+      background: linear-gradient(160deg, #021a2e 0%, #000d1f 50%, #000 100%);
+    }
+
+    /* Particle dots */
+    .card__banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 60% 20%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 80% 60%, rgba(255,255,255,0.2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 40% 70%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 40%, rgba(255,255,255,0.15) 0%, transparent 100%);
+    }
+
+    .card--dark .card__banner::after {
+      content: '🌲';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+      opacity: 0.08;
+    }
+
+    .card--hospital .card__banner::after {
+      content: '🏥';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+      opacity: 0.08;
+    }
+
+    .card__badge {
+      position: relative;
+      z-index: 1;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid;
+    }
+
+    .card--dark .card__badge {
+      color: var(--accent-dark);
+      border-color: var(--accent-dark);
+      background: rgba(124,58,237,0.1);
+    }
+
+    .card--hospital .card__badge {
+      color: var(--accent-hospital);
+      border-color: var(--accent-hospital);
+      background: rgba(14,165,233,0.1);
+    }
+
+    .card__body {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .card__title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .card__desc {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .card__cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 8px;
+      padding: 13px 24px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .card__cta:hover { opacity: 0.88; transform: scale(1.02); }
+    .card__cta:active { transform: scale(0.98); }
+
+    .card--dark  .card__cta { background: var(--accent-dark);  color: #fff; }
+    .card--hospital .card__cta { background: var(--accent-hospital); color: #fff; }
+
+    .card__cta-arrow { transition: transform 0.2s; }
+    .card__cta:hover .card__cta-arrow { transform: translateX(4px); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 32px 24px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--text); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      header { padding: 56px 20px 48px; }
+      .games { padding-bottom: 56px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-mark" aria-hidden="true">🌱</div>
+    <h1>SeedXY Games</h1>
+    <p class="tagline">Horror procedurale per browser. Ogni partita nasce da un seed — nessuna partita è uguale all'altra.</p>
+  </header>
+
+  <main>
+    <div class="games">
+
+      <!-- THE DARK SEED -->
+      <article class="card card--dark">
+        <div class="card__banner">
+          <span class="card__badge">In gioco</span>
+        </div>
+        <div class="card__body">
+          <h2 class="card__title">The Dark Seed</h2>
+          <p class="card__desc">
+            Sei un agente di pattuglia di notte in un bosco procedurale. Bigfoot, sette, alieni, osservatori nell'ombra — il seed decide tutto. Stesso seed, stesso mondo. Zero risorse caricate: tutto generato dal codice.
+          </p>
+          <div class="card__tags">
+            <span class="tag">Horror</span>
+            <span class="tag">Open world</span>
+            <span class="tag">WebGL2</span>
+            <span class="tag">Procedurale</span>
+            <span class="tag">Babylon.js</span>
+          </div>
+          <a class="card__cta" href="https://seedxygames.github.io/the-dark-seed/" target="_blank" rel="noopener">
+            Gioca ora <span class="card__cta-arrow">→</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- THE HOSPITAL SEED -->
+      <article class="card card--hospital">
+        <div class="card__banner">
+          <span class="card__badge">In gioco</span>
+        </div>
+        <div class="card__body">
+          <h2 class="card__title">The Hospital Seed</h2>
+          <p class="card__desc">
+            È la vigilia di Natale. Sei il guardiano notturno dell'Ospedale San Nicola — soli tu e i pazienti, dalle 22:00 alle 06:00. Tre piani, layout diverso a ogni seed, incarichi veri, buio vero.
+          </p>
+          <div class="card__tags">
+            <span class="tag">Horror</span>
+            <span class="tag">Survival</span>
+            <span class="tag">WebGL2</span>
+            <span class="tag">Procedurale</span>
+            <span class="tag">Babylon.js</span>
+          </div>
+          <a class="card__cta" href="https://seedxygames.github.io/the-hospital-seed/" target="_blank" rel="noopener">
+            Gioca ora <span class="card__cta-arrow">→</span>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      SeedXY Games &nbsp;·&nbsp;
+      <a href="https://github.com/seedXYgames" target="_blank" rel="noopener">GitHub</a>
+    </p>
+  </footer>
+
+</body>
+</html>
